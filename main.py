@@ -15,6 +15,8 @@ def add(list_notes):
     list_notes[1] = assembling
     return list_notes
     
+def show(list_notes):
+    print("список заметок: ", list_notes)
     
 
 
@@ -26,6 +28,8 @@ def add(list_notes):
 while True:
     command = input("введи команду: ")
     if (command == "add"):
-        add(notes_list)
-    else:
-        print ("нет команды")
+        add (notes_list)
+        print ("заметка успешно добавлена!")
+    elif (command == "show"):
+        show(notes_list)
+        
