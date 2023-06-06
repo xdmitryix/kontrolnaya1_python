@@ -1,3 +1,4 @@
+import json
 import datetime
 notes_list = {}
 next_key = 1
@@ -8,10 +9,11 @@ def add(list_notes, key_next):
     title = input("введи заголовок заметки: ")
     text = input("введи текст заметки: ")
     dt_now = datetime.datetime.now()
+    iso_dt_now = dt_now.isoformat()
     assembling = []
     assembling.append(title)
     assembling.append(text)
-    assembling.append(dt_now)
+    assembling.append(iso_dt_now)
     list_notes[key_next] = assembling
     return list_notes
     
@@ -38,10 +40,11 @@ def change(list_notes):
             title = input("введи заголовок заметки: ")
             text = input("введи текст заметки: ")
             dt_now = datetime.datetime.now()
+            iso_dt_now = dt_now.isoformat()
             assembling = []
             assembling.append(title)
             assembling.append(text)
-            assembling.append(dt_now)
+            assembling.append(iso_dt_now)
             list_notes[k] = assembling
             count = count+1
     if (count >= 1):
@@ -58,6 +61,11 @@ def rec(list_notes):
             print("Искомая заметка: \n", list_notes[k])
         if (count == 0):
             print("заметка не найдена!")
+
+def save():
+    with open("notes_list.json","w", encoding="utf-8") as ts:
+        ts.write(json.dumps(notes_list,ensure_ascii=False))
+    print("Ваш телефонный справочник был успешно сохранен в файле notes_list.json")
 
 
 
@@ -77,4 +85,6 @@ while True:
         change(notes_list)
     elif (command == "rec"):
         rec(notes_list)
+    elif (command == "save"):
+        save()
         
