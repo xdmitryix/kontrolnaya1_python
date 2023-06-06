@@ -49,6 +49,17 @@ def change(list_notes):
     else:
         print("заметка с данным ID не найдена!")
 
+def rec(list_notes):
+    count = 0
+    num = int(input("введи ID(номер) заметки: "))
+    for k in list_notes:
+        if (k == num):
+            count = count+1
+            print("Искомая заметка: \n", list_notes[k])
+        if (count == 0):
+            print("заметка не найдена!")
+
+
 
 
 while True:
@@ -64,4 +75,6 @@ while True:
         dell(notes_list)
     elif (command == "change"):
         change(notes_list)
+    elif (command == "rec"):
+        rec(notes_list)
         
