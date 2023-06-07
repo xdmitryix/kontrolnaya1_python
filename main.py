@@ -62,10 +62,14 @@ def rec(list_notes):
         if (count == 0):
             print("заметка не найдена!")
 
+# def save():
+#     with open("notes_list.json","w", encoding="utf-8") as ts:
+#         ts.write(json.dumps(notes_list,ensure_ascii=False))
+#     print("Ваш телефонный справочник был успешно сохранен в файле notes_list.json")
+
 def save():
-    with open("notes_list.json","w", encoding="utf-8") as ts:
-        ts.write(json.dumps(notes_list,ensure_ascii=False))
-    print("Ваш телефонный справочник был успешно сохранен в файле notes_list.json")
+    with open('notes_json.json', 'w') as outfile:
+        json.dump(notes_list, outfile)
 
 
 
