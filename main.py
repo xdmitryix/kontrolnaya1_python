@@ -14,6 +14,15 @@ def add(list_notes, key_next):
     assembling.append(title)
     assembling.append(text)
     assembling.append(iso_dt_now)
+    if (len(list_notes) == 0):
+        key_next = 1
+    else:
+        max_key = 0
+        list_notes_keys = list_notes.keys()
+        for key in list_notes_keys:
+            if (key > max_key):
+                max_key = key
+        key_next = max_key + 1
     list_notes[key_next] = assembling
     return list_notes
     
@@ -62,28 +71,17 @@ def rec(list_notes):
         if (count == 0):
             print("заметка не найдена!")
 
-# def save():
-#     with open("notes_list.json","w", encoding="utf-8") as ts:
-#         ts.write(json.dumps(notes_list,ensure_ascii=False))
-#     print("Ваш телефонный справочник был успешно сохранен в файле notes_list.json")
-
 def save():
     with open('notes_json.json', 'w') as outfile:
         json.dump(notes_list, outfile)
-
-# def load():
-#     with open('notes_json.json') as f:
-#         templates = json.load(f)
-#         print(templates)
-#         for section, commands in templates.items():
-#             print(section)
-#             print('\n'.join(commands))
+        print("изменения успешно сохранены в файл!")
 
 def load(list_notes):
     with open('notes_json.json') as f:
         templates = json.load(f)
         for section, commands in templates.items():
-           list_notes[section] = commands
+           list_notes[int(section)] = commands
+    print("файл успешно загружен!")
 
 
 
