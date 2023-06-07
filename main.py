@@ -71,6 +71,20 @@ def save():
     with open('notes_json.json', 'w') as outfile:
         json.dump(notes_list, outfile)
 
+# def load():
+#     with open('notes_json.json') as f:
+#         templates = json.load(f)
+#         print(templates)
+#         for section, commands in templates.items():
+#             print(section)
+#             print('\n'.join(commands))
+
+def load(list_notes):
+    with open('notes_json.json') as f:
+        templates = json.load(f)
+        for section, commands in templates.items():
+           list_notes[section] = commands
+
 
 
 
@@ -91,4 +105,6 @@ while True:
         rec(notes_list)
     elif (command == "save"):
         save()
+    elif (command == "load"):
+        load(notes_list)
         
