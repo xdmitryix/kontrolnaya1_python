@@ -1,9 +1,7 @@
 import json
 import datetime
-notes_list = {}
-next_key = 1
 
-
+# Функции:
 
 def add(list_notes, key_next):
     title = input("введи заголовок заметки: ")
@@ -77,6 +75,7 @@ def save():
         print("изменения успешно сохранены в файл!")
 
 def load(list_notes):
+    list_notes.clear()
     with open('notes_json.json') as f:
         templates = json.load(f)
         for section, commands in templates.items():
@@ -84,8 +83,9 @@ def load(list_notes):
     print("файл успешно загружен!")
 
 
-#Сама Программа:
-
+# Сама Программа:
+notes_list = {}
+next_key = 1
 print("Прилождение для заметок готово к использованию!")
 print("\nсписок команд:\n add - добавление заметки\n show - показать список заметок\n dell - удалить заметку\n change - изменить заметку\n rec - вывод заметки по ID\n \
 save - сохранить список заметок\n load - загрузить список заметок\n help - вызвать список команд\n exit - выход\n")
