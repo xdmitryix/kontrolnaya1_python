@@ -84,11 +84,14 @@ def load(list_notes):
     print("файл успешно загружен!")
 
 
+#Сама Программа:
 
-
+print("Прилождение для заметок готово к использованию!")
+print("\nсписок команд:\n add - добавление заметки\n show - показать список заметок\n dell - удалить заметку\n change - изменить заметку\n rec - вывод заметки по ID\n \
+save - сохранить список заметок\n load - загрузить список заметок\n help - вызвать список команд\n exit - выход\n")
 while True:
     
-    command = input("введи команду: ")
+    command = input("введите команду: ")
     if (command == "add"):
         add (notes_list, next_key)
         next_key = next_key + 1
@@ -105,4 +108,11 @@ while True:
         save()
     elif (command == "load"):
         load(notes_list)
+    elif (command == "help"):
+        print("\nсписок команд:\n add - добавление заметки\n show - показать список заметок\n dell - удалить заметку\n change - изменить заметку\n rec - вывод заметки по ID\n \
+save - сохранить список заметок\n load - загрузить список заметок\n help - вызвать список команд\n exit - выход\n")
+    elif (command == "exit"):
+        break
+    else:
+        print("команда не найдена! введите команду  'help' для вывода списка доступных команд.")
         
