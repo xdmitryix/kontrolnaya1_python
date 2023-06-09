@@ -82,13 +82,21 @@ def load(list_notes):
            list_notes[int(section)] = commands
     print("файл успешно загружен!")
 
+def search(list_notes):
+    search_string = input("введи данные, для их поиска в заметках(и вывода списка таких заметок):")
+    temp = {key:val for key,val in list_notes.items() if any(search_string in s for s in val)} 
+    if temp == {}:
+        return "искомых данных нет ни в одной заметке!"
+    else:
+        return temp
+
 
 # Сама Программа:
 notes_list = {}
 next_key = 1
 print("Прилождение для заметок готово к использованию!")
 print("\nсписок команд:\n add - добавление заметки\n show - показать список заметок\n dell - удалить заметку\n change - изменить заметку\n rec - вывод заметки по ID\n \
-save - сохранить список заметок\n load - загрузить список заметок\n help - вызвать список команд\n exit - выход\n")
+save - сохранить список заметок\n load - загрузить список заметок\n search - поиск в заметках по ключевым словам\n help - вызвать список команд\n exit - выход\n")
 while True:
     
     command = input("введите команду: ")
@@ -110,9 +118,11 @@ while True:
         load(notes_list)
     elif (command == "help"):
         print("\nсписок команд:\n add - добавление заметки\n show - показать список заметок\n dell - удалить заметку\n change - изменить заметку\n rec - вывод заметки по ID\n \
-save - сохранить список заметок\n load - загрузить список заметок\n help - вызвать список команд\n exit - выход\n")
+save - сохранить список заметок\n load - загрузить список заметок\n search - поиск в заметках по ключевым словам\n help - вызвать список команд\n exit - выход\n")
     elif (command == "exit"):
         break
+    elif (command == "search"):
+        print(search(notes_list))
     else:
         print("команда не найдена! введите команду  'help' для вывода списка доступных команд.")
         
